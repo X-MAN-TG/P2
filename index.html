@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dev-CipherX - For Prachi</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Dancing+Script:wght@600&family=Poppins:wght@300;400;600;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            overflow: hidden;
+            height: 100vh;
+            position: relative;
+        }
+
+        /* Page 1 - Sad/Apology Theme */
+        .page1 {
+            background: linear-gradient(180deg, #1a1a2e 0%, #16213e 30%, #0f3460 70%, #533483 100%);
+            position: relative;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        /* Enhanced Sea Background */
+        .sea-container {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 60vh;
+            background: linear-gradient(180deg, rgba(15,52,96,0.8) 0%, #0f3460 30%, #1e3c72 70%, #2a5298 100%);
+            overflow: hidden;
+        }
+
+        .wave {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 200%;
+            height: 100px;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 120'%3E%3Cpath d='M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z' fill='%23ffffff' fill-opacity='0.1'/%3E%3C/svg%3E") repeat-x;
+            animation: wave 8s linear infinite;
+        }
+
+        .wave:nth-child(2) {
+            bottom: 10px;
+            animation: wave 10s linear infinite reverse;
+            opacity: 0.7;
+        }
+
+        .wave:nth-child(3) {
+            bottom: 20px;
+            animation: wave 12s linear infinite;
+            opacity: 0.5;
+        }
+
+        @keyframes wave {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        /* Soft Ambient Clouds */
+        .clouds {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 300px;
+            background: 
+                radial-gradient(ellipse 800px 200px at 10% 20%, rgba(255,255,255,0.1) 0%, transparent 50%),
+                radial-gradient(ellipse 600px 150px at 80% 10%, rgba(255,255,255,0.08) 0%, transparent 50%),
+                radial-gradient(ellipse 900px 180px at 40% 5%, rgba(255,255,255,0.06) 0%, transparent 50%);
+            animation: cloudMove 20s ease-in-out infinite alternate;
+        }
+
+        @keyframes cloudMove {
+            0% { transform: translateX(-20px); }
+            100% { transform: translateX(20px); }
+        }
+
+        /* Rain Animation */
+        .rain {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            pointer-events: none;
+        }
+
+        .raindrop {
+            position: absolute;
+            width: 2px;
+            height: 20px;
+            background: linear-gradient(180deg, transparent 0%, rgba(135,206,250,0.6) 100%);
+            animation: fall linear infinite;
+        }
+
+        @keyframes fall {
+            to {
+                transform: translateY(100vh);
+            }
+        }
+
+        /* Crying GIF Container */
+        .crying-gif {
+            width: 150px;
+            height: 150px;
+            margin-bottom: 40px;
+            border-radius: 50%;
+            background: radial-gradient(circle, #4a90e2, #357abd);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 80px;
+            animation: gentle-bounce 3s ease-in-out infinite;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            position: relative;
+            z-index: 10;
+        }
+
+        .crying-gif::before {
+            content: '';
+            position: absolute;
+            top: 70%;
+            left: 30%;
+            width: 4px;
+            height: 30px;
+            background: linear-gradient(180deg, rgba(135,206,250,0.8), transparent);
+            animation: tears 2s ease-in-out infinite;
+            border-radius: 2px;
+        }
+
+        .crying-gif::after {
+            content: '';
+            position: absolute;
+            top: 70%;
+            right: 30%;
+            width: 4px;
+            height: 25px;
+            background: linear-gradient(180deg, rgba(135,206,250,0.8), transparent);
+            animation: tears 2s ease-in-out infinite 0.5s;
+            border-radius: 2px;
+        }
+
+        @keyframes gentle-bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        @keyframes tears {
+            0% { opacity: 0; transform: translateY(-5px); }
+            50% { opacity: 1; transform: translateY(10px); }
+            100% { opacity: 0; transform: translateY(25px); }
+        }
+
+        /* Main Text Styling with Neon Glow and Typing Effect */
+        .main-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: #fff;
+            text-align: center;
+            margin-bottom: 50px;
+            text-shadow: 
+                0 0 10px rgba(135,206,250,0.8),
+                0 0 20px rgba(135,206,250,0.6),
+                0 0 30px rgba(135,206,250,0.4),
+                0 0 40px rgba(135,206,250,0.2);
+            position: relative;
+            z-index: 10;
+            line-height: 1.3;
+        }
+
+        .typing-text {
+            overflow: hidden;
+            border-right: 3px solid rgba(135,206,250,0.8);
+            white-space: nowrap;
+            margin: 0 auto;
+            animation: typing 3s steps(40, end), blink-caret 0.75s step-end infinite;
+        }
+
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+
+        @keyframes blink-caret {
+            from, to { border-color: transparent; }
+            50% { border-color: rgba(135,206,250,0.8); }
+        }
+
+        @keyframes noBtnMove {
+            0% { transform: translate(0, 0); }
+            25% { transform: translate(50px, -30px); }
+            50% { transform: translate(-40px, 20px); }
+            75% { transform: translate(30px, -50px); }
+            100% { transform: translate(-20px, 40px); }
+        }
+
+        /* Button Styling */
+        .buttons {
+            display: flex;
+            gap: 40px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .btn {
+            padding: 15px 40px;
+            border: none;
+            border-radius: 50px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+        }
+
+        .btn-yes {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            transform: scale(1);
+        }
+
+        .btn-yes:hover {
+            transform: scale(1.05);
+            box-shadow: 0 12px 35px rgba(102,126,234,0.4);
+        }
+
+        .btn-no {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            transition: all 0.2s ease;
+        }
+
+        /* Developer Credits */
+        .dev-credits {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: rgba(255,255,255,0.9);
+            text-shadow: 
+                0 0 10px rgba(135,206,250,0.6),
+                0 0 20px rgba(135,206,250,0.4);
+            z-index: 10;
+            letter-spacing: 2px;
+        }
+
+        /* Page 2 - Happy Theme */
+        .page2 {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #f5576c 75%, #4facfe 100%);
+            position: relative;
+            height: 100vh;
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        /* Happy GIF */
+        .happy-gif {
+            width: 150px;
+            height: 150px;
+            margin-bottom: 40px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #ffeaa7, #fdcb6e);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 80px;
+            animation: happy-bounce 2s ease-in-out infinite;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            position: relative;
+            z-index: 10;
+        }
+
+        @keyframes happy-bounce {
+            0%, 100% { transform: rotate(-5deg) scale(1); }
+            50% { transform: rotate(5deg) scale(1.1); }
+        }
+
+        /* Floating Emojis */
+        .floating-emoji {
+            position: absolute;
+            font-size: 2rem;
+            animation: float-up 8s ease-in-out infinite;
+            pointer-events: none;
+        }
+
+        @keyframes float-up {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Sun */
+        .sun {
+            position: absolute;
+            top: 50px;
+            right: 80px;
+            width: 80px;
+            height: 80px;
+            background: radial-gradient(circle, #f39c12, #f1c40f);
+            border-radius: 50%;
+            animation: sun-glow 4s ease-in-out infinite alternate;
+            box-shadow: 0 0 30px rgba(241,196,15,0.6);
+        }
+
+        @keyframes sun-glow {
+            0% { box-shadow: 0 0 30px rgba(241,196,15,0.6); }
+            100% { box-shadow: 0 0 50px rgba(241,196,15,0.8), 0 0 70px rgba(241,196,15,0.4); }
+        }
+
+        /* Heart Animation Between Pages */
+        .heart-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+        }
+
+        .heart-container {
+            position: relative;
+        }
+
+        .heart {
+            width: 100px;
+            height: 90px;
+            position: relative;
+            animation: heartbeat 1s ease-in-out infinite;
+        }
+
+        .heart:before,
+        .heart:after {
+            content: '';
+            width: 52px;
+            height: 80px;
+            position: absolute;
+            left: 50px;
+            top: 0;
+            background: #e74c3c;
+            border-radius: 50px 50px 0 0;
+            transform: rotate(-45deg);
+            transform-origin: 0 100%;
+        }
+
+        .heart:after {
+            left: 0;
+            transform: rotate(45deg);
+            transform-origin: 100% 100%;
+        }
+
+        @keyframes heartbeat {
+            0% { transform: scale(1); }
+            14% { transform: scale(1.3); }
+            28% { transform: scale(1); }
+            42% { transform: scale(1.3); }
+            70% { transform: scale(1); }
+        }
+
+        .heart-particles {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .particle {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: #e74c3c;
+            border-radius: 50%;
+            animation: particle-explosion 2s ease-out infinite;
+        }
+
+        @keyframes particle-explosion {
+            0% {
+                transform: translate(0, 0) scale(1);
+                opacity: 1;
+            }
+            100% {
+                transform: translate(var(--x), var(--y)) scale(0);
+                opacity: 0;
+            }
+        }
+
+        /* Hidden class */
+        .hidden {
+            display: none !important;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .main-text {
+                font-size: 2rem;
+                padding: 0 20px;
+            }
+            .buttons {
+                gap: 20px;
+            }
+            .btn {
+                padding: 12px 30px;
+                font-size: 1rem;
+            }
+            .dev-credits {
+                font-size: 1.4rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Page 1: Apology -->
+    <div class="page1" id="page1">
+        <!-- Soft Ambient Clouds -->
+        <div class="clouds"></div>
+        
+        <!-- Enhanced Sea Background -->
+        <div class="sea-container">
+            <div class="wave"></div>
+            <div class="wave"></div>
+            <div class="wave"></div>
+        </div>
+        
+        <!-- Rain Animation -->
+        <div class="rain" id="rain"></div>
+        
+        <!-- Crying GIF -->
+        <div class="crying-gif">😢</div>
+        
+        <!-- Main Text with Typing Animation -->
+        <div class="main-text">
+            <div class="typing-text" id="typingText">I'm sorry Prachi...</div>
+            <div style="margin-top: 20px; font-size: 2rem;">Can you forgive me?</div>
+        </div>
+        
+        <!-- Buttons -->
+        <div class="buttons">
+            <button class="btn btn-yes" id="yesBtn">Yes</button>
+            <button class="btn btn-no" id="noBtn">No</button>
+        </div>
+        
+        <!-- Developer Credits -->
+        <div class="dev-credits">𝗗𝗲𝘃 - 𝗖𝗶𝗽𝗵𝗲𝗿𝗫</div>
+    </div>
+
+    <!-- Heart Animation Between Pages -->
+    <div class="heart-animation" id="heartAnimation">
+        <div class="heart-container">
+            <div class="heart"></div>
+            <div class="heart-particles" id="heartParticles"></div>
+        </div>
+    </div>
+
+    <!-- Page 2: Happy -->
+    <div class="page2" id="page2">
+        <!-- Sun -->
+        <div class="sun"></div>
+        
+        <!-- Happy GIF -->
+        <div class="happy-gif">🥰</div>
+        
+        <!-- Main Text -->
+        <div class="main-text">
+            <div class="typing-text">I knew it Prachi Pie 🥰😇</div>
+        </div>
+        
+        <!-- Developer Credits -->
+        <div class="dev-credits">𝗗𝗲𝘃 - 𝗖𝗶𝗽𝗵𝗲𝗿𝗫</div>
+    </div>
+
+    <script>
+        // Initialize rain animation
+        function createRain() {
+            const rain = document.getElementById('rain');
+            const numberOfDrops = 100;
+            
+            for (let i = 0; i < numberOfDrops; i++) {
+                const drop = document.createElement('div');
+                drop.className = 'raindrop';
+                drop.style.left = Math.random() * 100 + '%';
+                drop.style.animationDuration = (Math.random() * 2 + 1) + 's';
+                drop.style.animationDelay = Math.random() * 2 + 's';
+                rain.appendChild(drop);
+            }
+        }
+
+        // Create floating emojis for page 2
+        function createFloatingEmojis() {
+            const emojis = ['😊', '🙂', '🥰', '🥳', '❤️', '💖', '✨', '🌟'];
+            const page2 = document.getElementById('page2');
+            
+            setInterval(() => {
+                const emoji = document.createElement('div');
+                emoji.className = 'floating-emoji';
+                emoji.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+                emoji.style.left = Math.random() * 100 + '%';
+                emoji.style.animationDelay = '0s';
+                emoji.style.animationDuration = (Math.random() * 2 + 5) + 's';
+                page2.appendChild(emoji);
+                
+                // Remove emoji after animation
+                setTimeout(() => {
+                    emoji.remove();
+                }, 8000);
+            }, 800);
+        }
+
+        // No button evasion with animation
+        function makeNoButtonEvade() {
+            const noBtn = document.getElementById('noBtn');
+            
+            noBtn.addEventListener('mouseover', function() {
+                noBtn.style.animation = 'noBtnMove 0.5s forwards';
+                setTimeout(() => {
+                    noBtn.style.animation = '';
+                }, 500);
+            });
+            
+            noBtn.addEventListener('click', function() {
+                noBtn.style.animation = 'noBtnMove 0.5s forwards';
+                setTimeout(() => {
+                    noBtn.style.animation = '';
+                }, 500);
+            });
+        }
+
+        // Create heart particles
+        function createHeartParticles() {
+            const container = document.getElementById('heartParticles');
+            const colors = ['#e74c3c', '#f39c12', '#f1c40f', '#e67e22', '#c0392b'];
+            
+            for (let i = 0; i < 20; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.background = colors[Math.floor(Math.random() * colors.length)];
+                
+                const angle = (i / 20) * Math.PI * 2;
+                const distance = 100 + Math.random() * 100;
+                const x = Math.cos(angle) * distance;
+                const y = Math.sin(angle) * distance;
+                
+                particle.style.setProperty('--x', x + 'px');
+                particle.style.setProperty('--y', y + 'px');
+                particle.style.animationDelay = Math.random() * 2 + 's';
+                
+                container.appendChild(particle);
+            }
+        }
+
+        // Yes button functionality
+        document.getElementById('yesBtn').addEventListener('click', () => {
+            const page1 = document.getElementById('page1');
+            const heartAnimation = document.getElementById('heartAnimation');
+            const page2 = document.getElementById('page2');
+            
+            // Hide page 1
+            page1.style.display = 'none';
+            
+            // Show heart animation
+            heartAnimation.style.display = 'flex';
+            
+            // After 3 seconds, show page 2
+            setTimeout(() => {
+                heartAnimation.style.display = 'none';
+                page2.style.display = 'flex';
+                
+                // Start floating emojis
+                createFloatingEmojis();
+                
+                // Restart typing animation for page 2
+                const typingText = page2.querySelector('.typing-text');
+                typingText.style.animation = 'none';
+                setTimeout(() => {
+                    typingText.style.animation = 'typing 3s steps(40, end), blink-caret 0.75s step-end infinite';
+                }, 50);
+            }, 3000);
+        });
+
+        // Initialize everything when page loads
+        document.addEventListener('DOMContentLoaded', () => {
+            createRain();
+            makeNoButtonEvade();
+            createHeartParticles();
+        });
+    </script>
+</body>
+</html>
